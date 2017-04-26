@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  dw-php7: 
+    build: ./build
+    ports:
+      - "8080:80"
+    volumes:
+      - ./workdir:/var/www/html/dw/
+    environment:
+      MYSQL_HOST: dw-mysql
+      MYSQL_DATABASE: dw
+      MYSQL_USER: dw
+      MYSQL_PASSWORD: abcdef
+    links:
+      - dw-mysql
+
+  dw-mysql:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: abcdef
+      MYSQL_DATABASE: dw
+      MYSQL_USER: dw
+      MYSQL_PASSWORD: abcdef
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+
+  dw-myadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: dw-mysql
