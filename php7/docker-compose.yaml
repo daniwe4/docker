@@ -6,12 +6,16 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./workdir:/var/www/html/dw/
+      #- ./workdir:/var/www/html/dw/
+      - ./config/php.conf:/usr/local/etc/php/conf.d/php.ini:ro
     environment:
       MYSQL_HOST: dw-mysql
       MYSQL_DATABASE: dw
       MYSQL_USER: dw
       MYSQL_PASSWORD: abcdef
+      ILIAS_URL: https://ilias.test.cat.internal/
+      ILIAS_MASTER_PASSWORD: abcdef
+      ILIAS_RELEASE: release_5-2
     links:
       - dw-mysql
 
