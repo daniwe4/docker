@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir -p /var/www/log
+mkdir -p /var/www/ilias/data/index
 
 if [ ! -f /etc/apache2/sites-enabled/dw.conf ]; then
 echo "Configure apache..."
@@ -177,5 +178,9 @@ chown www-data:www-data /var/www -R
 fi
 
 echo "****** ILIAS default login: root:homer ******"
+
+echo "****** Start Java Server *******"
+java -Dfile.encoding=UTF-8 -jar /var/www/html/dw/ilias/Services/WebServices/RPC/lib/ilServer.jar \
+/var/www/ilias/data/ilServer.ini start &
 
 /usr/sbin/apache2ctl -D FOREGROUND
