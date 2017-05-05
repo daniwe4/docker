@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-RUN apt-get update && apt-get install apache2 php5 php5-mysql php5-gd php5-cli mysql-client git wget findutils sudo -y -qq
+RUN apt-get update && apt-get install apache2 php5 php5-mysql php5-xsl php5-gd php5-cli mysql-client git wget findutils sudo -y -qq
 RUN apt-get install curl imagemagick zip unzip openjdk-7-jre -y -qq
 RUN apt-get clean
 
