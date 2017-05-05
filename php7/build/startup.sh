@@ -167,9 +167,9 @@ soap:
 EOF
 
 # Check for MySQL-Connection...
-until mysqlshow -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE; do
-    sleep 3
-done
+# until mysqlshow -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE; do
+#     sleep 3
+# done
 
 echo "Configure ILIAS, this might take a while."
 php /ilias-tool-InstILIAS/src/bin/install.php /ilias-tool-InstILIAS/src/config.yaml non_interactiv
