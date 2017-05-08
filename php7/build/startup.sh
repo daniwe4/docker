@@ -23,7 +23,7 @@ ServerSignature Off
 EOF
 fi
 
-if [ ! -f /var/www/html/ilias/ilias.ini.php ]; then
+if [ ! -f /var/www/html/dw/ilias/ilias.ini.php ]; then
 	echo "Configure InstILIAS..."
 	cat << EOF > /ilias-tool-InstILIAS/src/config.yaml
 ---
@@ -66,7 +66,7 @@ server:
     http_path: http://$ILIAS_URL
     #Directory on the webserver ILIAS should be installed in
     #Example: /var/www/html/ilias/
-    absolute_path: /var/www/html/dw/ilias/
+    absolute_path: /var/www/html/dw/ilias
     #Timezone for PHP
     timezone: Europe/Berlin
 setup:
