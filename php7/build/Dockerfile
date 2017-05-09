@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-RUN apt-get update && apt-get install apache2 php5 php5-mysql php5-curl php5-xmlrpc php5-xsl php5-gd php5-cli mysql-client git wget findutils sudo -y -qq
+RUN apt-get update && apt-get install apache2 php5 php5-mysqlnd php5-curl php5-xmlrpc php5-xsl php5-gd php5-cli mysql-client git wget findutils sudo -y -qq
 RUN apt-get install curl imagemagick zip unzip openjdk-7-jre -y -qq
 RUN apt-get clean
 
@@ -9,7 +9,6 @@ ADD id_rsa /root/.ssh/id_rsa
 RUN chmod 400 ~/.ssh/id_rsa
 RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 RUN rm /etc/apache2/sites-enabled/000-default.conf
-
 
 RUN cd / && git clone git@github.com:daniwe4/ilias-tool-InstILIAS.git
 RUN cd /ilias-tool-InstILIAS && git checkout release_5-2

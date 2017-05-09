@@ -26,8 +26,6 @@ services:
       MYSQL_DATABASE: dw
       MYSQL_USER: dw
       MYSQL_PASSWORD: abcdef
-    volumes:
-      - ./volumes/mysql:/var/lib/mysql
 
   dw-myadmin:
     image: phpmyadmin/phpmyadmin

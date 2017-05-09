@@ -52,7 +52,7 @@ database:
     #Encoding for database
     encoding: utf8_general_ci
     # create db
-    create_db: 1
+    create_db: 0
 language:
     #Default language ILIAS will use.
     default: de
@@ -170,9 +170,9 @@ soap:
 EOF
 
 # Check for MySQL-Connection...
-# until mysqlshow -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE; do
-#     sleep 3
-# done
+until mysqlshow -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE; do
+    sleep 3
+done
 
 echo "Configure ILIAS, this might take a while."
 php /ilias-tool-InstILIAS/src/bin/install.php /ilias-tool-InstILIAS/src/config.yaml non_interactiv
@@ -182,7 +182,7 @@ fi
 echo "****** ILIAS default login: root:homer ******"
 
 echo "****** Start Java Server *******"
-java -Dfile.encoding=UTF-8 -jar /var/www/html/dw/ilias/Services/WebServices/RPC/lib/ilServer.jar \
-/var/www/ilias/data/ilServer.ini start &
+#java -Dfile.encoding=UTF-8 -jar /var/www/html/dw/ilias/Services/WebServices/RPC/lib/ilServer.jar \
+#/var/www/ilias/data/ilServer.ini start &
 
 /usr/sbin/apache2ctl -D FOREGROUND
